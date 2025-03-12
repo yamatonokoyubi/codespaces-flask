@@ -1,19 +1,29 @@
-<head>
-    <title>{{ title }}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+{% extends "layout.html" %}
+{% block content %}
+    <section class="page-section">
+        <h2 class="section-title">{{ message }}</h2>
 
-<body>
-    <div class="App">
-        <header class="App-header">
-            <img src="{{ url_for('static', filename='Octocat.png') }}" class="App-logo" alt="logo" />
-            <p>
-                GitHub Codespaces <span class="heart">♥️</span> Rion1
-            </p>
-            <p class="small">
-                情報ソリューション科＠日南振徳高校
-            </p>
-        </header>
-    </div>
-</body>
-
-</html>
+        <div class="student-list">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>名前</th>
+                        <th>性別</th>
+                        <th>出身校</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in students %}
+                        <tr>
+                            <td>{{ student.id }}</td>
+                            <td>{{ student.name }}</td>
+                            <td>{{ student.gender }}</td>
+                            <td>{{ student.school_name }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+{% endblock %}
